@@ -44,7 +44,7 @@ class db{
         $result = array();
         $qry = $this::$conn->prepare($queryString);
         if($qry->execute()){
-            $result = $qry->fetchAll(PDO::FETCH_ASSOC);
+            $result = $qry->fetchAll();
         }else{
             $this->error($queryString);
         }

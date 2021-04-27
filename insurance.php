@@ -1,4 +1,10 @@
-<?php include_once "includes/header.php"?>
+<?php include_once "includes/header.php";
+
+    include_once "database/db.php";
+    $db = db::get();
+    $queryString = "SELECT * FROM INSURANCE";
+    $result = $db->query($queryString);
+?>
 			
 			  
 			<!-- start banner Area -->
@@ -21,87 +27,20 @@
 			<section class="insurence-one-area section-gap">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-4 insurence-left">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-right">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-left">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-right">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-left">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-right">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-left">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-right">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-left">
-							<h1>Insurance for journey</h1>
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-4 insurence-right">
-							<h1>Insurance for journey</h1>						
-							<div class="list-wrap">
-								<ul>
-									<li>Strategic approach towards redesigning brand.</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+
+                        <?php foreach ($result as $row) :?>
+
+                            <div class="col-lg-4 insurence-left">
+                                <h1><?php echo $row["INSURANCE_NAME"] ?></h1>
+                                <div class="list-wrap">
+                                    <ul>
+                                        <li><b><?php echo "Ár: ".$row["INSURANCE_PRICE"]."Ft" ?></b></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        <?php endforeach; ?>
+
 				</div>	
 			</section>
 			<!-- End insurence-one Area -->					
