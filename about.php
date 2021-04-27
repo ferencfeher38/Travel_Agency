@@ -9,9 +9,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								About Us				
-							</h1>	
-							<p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.php"> About Us</a></p>
+								Rólunk
+							</h1>
+							<p class="text-white link-nav"><a href="index.php">Kezdőlap</a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.php"> Rólunk</a></p>
 						</div>	
 					</div>
 				</div>
@@ -26,10 +26,10 @@
 							<img class="img-fluid" src="img/about/info-img.jpg" alt="">
 						</div>
 						<div class="col-lg-6 info-right">
-							<h6>About Us</h6>
-							<h1>Who We Are?</h1>
+							<h6>Rólunk</h6>
+							<h1>Kik vagyunk mi?</h1>
 							<p>
-								Here, I focus on a range of items and features that we use in life without giving them a second thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                                Egy nagy és terjeszkedő cég, mely próbálja az emberek számára a lehető legjobbat nyújtani a repülőgépes utazások terén.
 							</p>
 						</div>
 					</div>
@@ -48,9 +48,9 @@
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="single-footer-widget">
 								<div class="single-footer-widget">
-								<h6>About</h6>
+								<h6>Kövessen minket!</h6>
 								<p>
-									 Szöveg
+                                    Ne maradjon le semmiről! Találkozzunk a közösségi oldalakon, ahol rendszeresen jelentkezünk repülőjegy akciókkal, nyereményjátékokkal és úti cél ajánlókkal!
 								</p>
 							</div>			
 							</div>
@@ -84,7 +84,7 @@
 
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
 						<p class="col-lg-8 col-sm-12 footer-text m-0">
-							<a>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</a>
+							<a>© 2021 utazas.hu | <script>document.write(new Date().getFullYear());</script> Minden jog fenntartva.</a>
 						</p>
 						<div class="col-lg-4 col-sm-12 footer-social">
 							<a href="#"><i class="fa fa-facebook"></i></a>

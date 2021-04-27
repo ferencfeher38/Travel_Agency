@@ -107,9 +107,9 @@ $result = $db->query($queryString);
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="single-footer-widget">
 								<div class="single-footer-widget">
-								<h6>About</h6>
+								<h6>Kövessen minket!</h6>
 								<p>
-									 Szöveg
+                                    Ne maradjon le semmiről! Találkozzunk a közösségi oldalakon, ahol rendszeresen jelentkezünk repülőjegy akciókkal, nyereményjátékokkal és úti cél ajánlókkal!
 								</p>
 							</div>			
 							</div>
@@ -143,7 +143,7 @@ $result = $db->query($queryString);
 
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
 						<p class="col-lg-8 col-sm-12 footer-text m-0">
-							<a>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</a>
+                            <a>© 2021 utazas.hu | <script>document.write(new Date().getFullYear());</script> Minden jog fenntartva.</a>
 						</p>
 						<div class="col-lg-4 col-sm-12 footer-social">
 							<a href="#"><i class="fa fa-facebook"></i></a>
