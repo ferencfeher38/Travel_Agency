@@ -3,8 +3,8 @@ class db{
     /**
      * Itt állítsátok át a saját adatbázisotokra.
      */
-    private static $db_username = "ASD";
-    private static $db_password = "asd";
+    private static $db_username = "ferenc";
+    private static $db_password = "asdasd";
     private static $instance = null;
     private static $conn = "";
     /**
@@ -44,7 +44,7 @@ class db{
         $result = array();
         $qry = $this::$conn->prepare($queryString);
         if($qry->execute()){
-            $result = $qry->fetchAll();
+            $result = $qry->fetchAll(PDO::FETCH_ASSOC);
         }else{
             $this->error($queryString);
         }
