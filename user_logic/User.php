@@ -127,7 +127,7 @@ class User
             return false;
         } else {
             if(User::user_exist($username, $user_email)){
-                $this->errors[] = "Ezzel az e-mail cím vagy felhasználónév foglalt!";
+                $this->errors[] = "Ez az e-mail cím vagy felhasználónév foglalt!";
                 return false;
             }else{
                 $hashPassword = password_hash($password, PASSWORD_DEFAULT);

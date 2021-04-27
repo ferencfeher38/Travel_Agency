@@ -1,0 +1,441 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include_once "user_logic/User.php";
+?>
+
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="colorlib">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Travel</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="css/linearicons.css">
+			<link rel="stylesheet" href="css/font-awesome.min.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/jquery-ui.css">				
+			<link rel="stylesheet" href="css/nice-select.css">							
+			<link rel="stylesheet" href="css/animate.min.css">
+			<link rel="stylesheet" href="css/owl.carousel.css">				
+			<link rel="stylesheet" href="css/main.css">
+		</head>
+		<body>	
+			<header id="header">
+				<div class="header-top">
+					<div class="container">
+			  		<div class="row align-items-center">
+			  			<div class="col-lg-6 col-sm-6 col-6 header-top-left">
+			  				<ul>
+			  					<li><a href="#">Visit Us</a></li>
+			  					<li><a href="#">Buy Tickets</a></li>
+			  				</ul>			
+			  			</div>
+			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
+							<div class="header-social">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+							</div>
+			  			</div>
+			  		</div>			  					
+					</div>
+				</div>
+				<div class="container main-menu">
+					<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a>Repülőjegy</a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+							<li><a href="index.html">Jegyfoglalás</a></li>
+							<li><a href="about.html">Rólunk</a></li>
+							<li><a href="hotels.html">Hotelek</a></li>
+							<li><a href="insurance.html">Biztosítások</a></li>				          					          		          
+							<li><a href="contact.html">Kapcsolat</a></li>
+							<li><a href="profil.html">Profil</a></li>
+							<li><a href="user_logic/login_template.php" type="button" name="btn" id="btn">Bejelentkezés</a></li>
+							<li><a href="index.html" button type="submit" name="logout_btn" id="logout_btn">Kijelentkezés</button></a></li>
+				        </ul>
+				      </nav><!-- #nav-menu-container -->					      		  
+					</div>
+				</div>
+			</header>
+			<!-- #header -->
+			
+			<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>				
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+						<div class="col-lg-6 col-md-6 banner-left">
+							<h6 class="text-white">Európai utazások</h6>
+							<h1 class="text-white">Utazzon Európa nagyvárosaiba</h1>
+						</div>
+						<div class="col-lg-4 col-md-6 banner-right">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+							  <li class="nav-item">
+							    <a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">Flights</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">Hotels</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab" aria-controls="holiday" aria-selected="false">Holidays</a>
+							  </li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+								<form class="form-wrap">
+									<input type="text" class="form-control" name="name" placeholder="From " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">									
+									<input type="text" class="form-control" name="to" placeholder="To " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
+									<input type="text" class="form-control date-picker" name="start" placeholder="Start " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
+									<input type="text" class="form-control date-picker" name="return" placeholder="Return " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
+									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adults " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
+									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Child " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">							
+									<a href="#" class="primary-btn text-uppercase">Search flights</a>									
+								</form>
+							  </div>
+							  <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
+								<form class="form-wrap">
+									<input type="text" class="form-control" name="name" placeholder="From " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">									
+									<input type="text" class="form-control" name="to" placeholder="To " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
+									<input type="text" class="form-control date-picker" name="start" placeholder="Start " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
+									<input type="text" class="form-control date-picker" name="return" placeholder="Return " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
+									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adults " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
+									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Child " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">						
+									<a href="#" class="primary-btn text-uppercase">Search Hotels</a>									
+								</form>							  	
+							  </div>
+							  <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
+								<form class="form-wrap">
+									<input type="text" class="form-control" name="name" placeholder="From " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">									
+									<input type="text" class="form-control" name="to" placeholder="To " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
+									<input type="text" class="form-control date-picker" name="start" placeholder="Start " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
+									<input type="text" class="form-control date-picker" name="return" placeholder="Return " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
+									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adults " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
+									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Child " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">							
+									<a href="#" class="primary-btn text-uppercase">Search Holidays</a>									
+								</form>							  	
+							  </div>
+							</div>
+						</div>
+					</div>
+				</div>					
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start szolgáltatások Area -->
+			<section class="other-issue-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-9">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Szolgáltatásaink</h1>
+		                    </div>
+		                </div>
+		            </div>					
+					<div class="row">
+						<div class="col-lg-4 col-md-7">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o1.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Repülőjegy foglalás</h4>
+								</a>
+								<p>
+									Foglalja le előre repülőjegyét.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-7">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o2.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Hotelek</h4>
+								</a>
+								<p>
+									Találja meg az Ön igényeihez megfelelő hotelt.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-7">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="img/o3.jpg" alt="">					
+								</div>
+								<a href="#">
+									<h4>Biztosítások</h4>
+								</a>
+								<p>
+									Válogassan különböző biztosítások közül.
+								</p>
+							</div>
+						</div>																	
+					</div>
+				</div>	
+			</section>
+			<!-- End other-issue Area -->
+
+			<!-- Start popular-destination Area -->
+			<section class="popular-destination-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Popular Destinations</h1>
+		                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
+		                    </div>
+		                </div>
+		            </div>						
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-destination relative">
+								<div class="thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<img class="img-fluid" src="img/d1.jpg" alt="">
+								</div>
+								<div class="desc">	
+									<a href="#" class="price-btn">$150</a>			
+									<h4>Mountain River</h4>
+									<p>Paraguay</p>			
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destination relative">
+								<div class="thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<img class="img-fluid" src="img/d2.jpg" alt="">
+								</div>
+								<div class="desc">	
+									<a href="#" class="price-btn">$250</a>			
+									<h4>Dream City</h4>
+									<p>Paris</p>			
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destination relative">
+								<div class="thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<img class="img-fluid" src="img/d3.jpg" alt="">
+								</div>
+								<div class="desc">	
+									<a href="#" class="price-btn">$350</a>			
+									<h4>Cloud Mountain</h4>
+									<p>Sri Lanka</p>			
+								</div>
+							</div>
+						</div>												
+					</div>
+				</div>	
+			</section>
+			<!-- End popular-destination Area -->
+			
+
+			<!-- Start price Area -->
+			<section class="price-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">We Provide Affordable Prices</h1>
+		                        <p>Well educated, intellectual people, especially scientists at all times demonstrate considerably.</p>
+		                    </div>
+		                </div>
+		            </div>						
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-price">
+								<h4>Cheap Packages</h4>
+								<ul class="price-list">
+									<li class="d-flex justify-content-between align-items-center">
+										<span>New York</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Maldives</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Sri Lanka</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Nepal</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Thiland</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>	
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Singapore</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>														
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-price">
+								<h4>Luxury Packages</h4>
+								<ul class="price-list">
+									<li class="d-flex justify-content-between align-items-center">
+										<span>New York</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Maldives</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Sri Lanka</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Nepal</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Thiland</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>	
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Singapore</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>														
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-price">
+								<h4>Camping Packages</h4>
+								<ul class="price-list">
+									<li class="d-flex justify-content-between align-items-center">
+										<span>New York</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Maldives</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Sri Lanka</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Nepal</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Thiland</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>	
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Singapore</span>
+										<a href="#" class="price-btn">$1500</a>
+									</li>														
+								</ul>
+							</div>
+						</div>												
+					</div>
+				</div>	
+			</section>
+			<!-- End price Area -->
+								
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-lg-3  col-md-6 col-sm-6">
+							
+						</div>
+						<div class="col-lg-3 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<div class="single-footer-widget">
+								<h6>About</h6>
+								<p>
+									 Szöveg
+								</p>
+							</div>			
+							</div>
+						</div>							
+						<div class="col-lg-3  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Menütérkép</h6>
+								<div class="row">
+									<div class="col">
+										<ul>
+											<li><a href="index.html">Kezdőlap</a></li>
+											<li><a href="about.html">Rólunk</a></li>			          					          		          
+											<li><a href="contact.html">Kapcsolat</a></li>
+										</ul>
+									</div>
+									<div class="col">
+										<ul>
+											<li><a href="hotels.html">Hotelek</a></li>
+											<li><a href="insurance.html">Biztosítások</a></li>	
+										</ul>
+									</div>										
+								</div>				
+							</div>
+						</div>
+						<div class="col-lg-3  col-md-6 col-sm-6">
+							<div class="single-footer-widget mail-chimp">
+								
+							</div>
+						</div>						
+					</div>
+
+					<div class="row footer-bottom d-flex justify-content-between align-items-center">
+						<p class="col-lg-8 col-sm-12 footer-text m-0">
+							<a>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</a>
+						</p>
+						<div class="col-lg-4 col-sm-12 footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End footer Area -->	
+
+			<script src="js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+ 			<script src="js/jquery-ui.js"></script>					
+  			<script src="js/easing.min.js"></script>			
+			<script src="js/hoverIntent.js"></script>
+			<script src="js/superfish.min.js"></script>	
+			<script src="js/jquery.ajaxchimp.min.js"></script>
+			<script src="js/jquery.magnific-popup.min.js"></script>						
+			<script src="js/jquery.nice-select.min.js"></script>					
+			<script src="js/owl.carousel.min.js"></script>							
+			<script src="js/mail-script.js"></script>	
+			<script src="js/main.js"></script>	
+		</body>
+	</html>

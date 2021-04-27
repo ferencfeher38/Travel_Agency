@@ -12,19 +12,19 @@
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        $_SESSION["error"][] = "A jelszavak nem egyeznek meg!";
-        header("Location: registration_template.php");
+        $_SESSION["registError"][] = "A jelszavak nem egyeznek meg!";
+        header("Location: ../login_template.php");
         return false;
     }
     if($user->register($username,$user_email,$password,2,"felhasznalo"))
     {
-        header("Location: login_template.php?success");
+        header("Location: ../login_template.php?success");
     }
     else
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        $_SESSION["error"] = $user->getErrors();
-        header("Location: registration_template.php");
+        $_SESSION["registError"] = $user->getErrors();
+        header("Location: ../login_template.php");
     }

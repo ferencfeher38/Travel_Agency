@@ -17,7 +17,7 @@ if($user->login($user_email, $password))
             session_start();
         }
         $_SESSION["error"][] = "Általános hiba, kérlek próbáld meg később!";
-        header("Location: login_template.php");
+        header("Location: ../login_template.php");
     }
 }
 else
@@ -26,5 +26,5 @@ else
         session_start();
     }
     $_SESSION["error"] = $user->getErrors();
-    header("Location: login_template.php");
+    header("Location: ../login_template.php");
 }
