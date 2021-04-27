@@ -39,7 +39,7 @@ include_once "user_logic/User.php";
 </head>
 <body>
 <header id="header">
-    <div class="header-top">
+    <!-- <div class="header-top">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-sm-6 col-6 header-top-left">
@@ -56,7 +56,7 @@ include_once "user_logic/User.php";
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
