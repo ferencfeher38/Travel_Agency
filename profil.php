@@ -2,13 +2,16 @@
 include_once "includes/header.php";
 include_once "database/db.php";
 $db = db :: get();
-$queryString = "SELECT * FROM USERS";
-$result = $db->query($queryString);
+$queryString = "SELECT USERNAME, USER_EMAIL FROM USERS WHERE USER_EMAIL = ".$db->escape($_SESSION["USER"]["USER_EMAIL"]);
+$result = $db->getRow($queryString);
 ?>
     <head>
     <style>
-        .data {
+        .datatitle {
             font-size: 20px;
+        }
+        .data {
+            font-size: 15px;
         }
     </style>
 </head>
@@ -36,9 +39,12 @@ $result = $db->query($queryString);
 							<div class="col-lg-8 col-md-8">
 								<h3 class="mb-30">Profil adatok</h3>
                                 <div>
-                                    <p class="data">Felhasználónév:</p>
-                                    <p class="data">E-mail:</p>
-                                    <p class="data">Jegyek:</p>
+                                    <p class="datatitle">Felhasználónév:</p>
+                                    <p class="data"><?php echo $result["USERNAME"]?></p>
+                                    <p class="datatitle">E-mail:</p>
+                                    <p class="data"><?php echo $result["USER_EMAIL"]?></p>
+                                    <p class="datatitle">Jegyek:</p>
+                                    <p class="data">Ide jönnek majd a jegyek.</p>
                                 </div>
 							</div>
 						</div>
@@ -58,9 +64,9 @@ $result = $db->query($queryString);
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="single-footer-widget">
 								<div class="single-footer-widget">
-								<h6>About</h6>
+								<h6>Kövessen minket!</h6>
 								<p>
-									 Szöveg
+                                    Ne maradjon le semmiről! Találkozzunk a közösségi oldalakon, ahol rendszeresen jelentkezünk repülőjegy akciókkal, nyereményjátékokkal és úti cél ajánlókkal!
 								</p>
 							</div>			
 							</div>
