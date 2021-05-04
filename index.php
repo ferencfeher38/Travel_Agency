@@ -1,5 +1,8 @@
+<?php
+include_once "includes/header.php";
+include_once "database/db.php";
+?>
 
-<?php include_once "includes/header.php"?>
 			<!-- start banner Area -->
 			<section class="banner-area relative">
 				<div class="overlay overlay-bg"></div>				

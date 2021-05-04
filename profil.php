@@ -1,7 +1,15 @@
 <?php
+// Header és db include.
 include_once "includes/header.php";
 include_once "database/db.php";
 $db = db :: get();
+
+// User csekk.
+if(!isset($_SESSION["USER"]) || empty($_SESSION["USER"])) {
+    header("Location: index.php");
+}
+
+// User adatok lekérése.
 $queryString = "SELECT USERNAME, USER_EMAIL FROM USERS WHERE USER_EMAIL = ".$db->escape($_SESSION["USER"]["USER_EMAIL"]);
 $result = $db->getRow($queryString);
 ?>
