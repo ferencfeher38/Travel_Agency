@@ -24,6 +24,7 @@ include_once "user_logic/User.php";
     <title>Travel</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--
     CSS
     ============================================= -->
@@ -69,6 +70,9 @@ include_once "user_logic/User.php";
                     <li><a href="hotels.php">Hotelek</a></li>
                     <li><a href="insurance.php">Biztosítások</a></li>
                     <li><a href="contact.php">Kapcsolat</a></li>
+                    <?php if(isset($_SESSION["USER"]) && !empty($_SESSION["USER"]) && $_SESSION["USER"]["PERMISSION_ID"] == 0) :?>
+                        <li><a class="nav-link active" aria-current="page" href="allUser.php">Felhasználók kezelése</a></li>
+                    <?php endif; ?>
                     <?php if(isset($_SESSION["USER"]) && !empty($_SESSION["USER"])) :?>
                             <li><a class="nav-link active" aria-current="page" href="profil.php">Profil </a></li>
                             <li><a href="user_logic/logout.php" type="submit" name="logout_btn" id="logout_btn">Kijelentkezés</a></li>

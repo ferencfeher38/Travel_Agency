@@ -144,6 +144,41 @@ class User
         }
     }
 
+    function update($user_id, $username, $user_email,$password,$permission_id,$permission_name, $update_permission)
+    {
+        if (
+            empty($username) ||
+            empty($user_email) ||
+            empty($permission_name)
+        ) {
+            $this->errors[] = "Minden mező kitöltése kötelező!";
+            return false;
+        } else {
+            if($update_permission != 0 && empty($password)){
+                $this->errors[] = "Minden mező kitöltése kötelező!";
+                return false;
+            }else{
+                if(User::user_exist_on_update($username, $user_email, $user_id)){
+                    $this->errors[] = "Ez az e-mail cím vagy felhasználónév foglalt!";
+                    return false;
+                }else{
+                    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+                    include_once "../database/db.php";
+                    $db = db::get();
+                    $queryString = "UPDATE USERS
+                                SET USERNAME = ".$db->escape($username).", USER_EMAIL = ".$db->escape($user_email).", PASSWORD = ".$db->escape($hashPassword).", PERMISSION_ID = ".$db->escape($permission_id).", PERMISSION_NAME = ".$db->escape($permission_name)."
+                                WHERE USER_ID = ".$db->escape($user_id);
+
+                    $queryStringAdmin = "UPDATE USERS
+                                SET USERNAME = ".$db->escape($username).", USER_EMAIL = ".$db->escape($user_email).", PERMISSION_ID = ".$db->escape($permission_id).", PERMISSION_NAME = ".$db->escape($permission_name)."
+                                WHERE USER_ID = ".$db->escape($user_id);
+                    $db->executeQuery(($update_permission == 0 ? $queryStringAdmin : $queryString));
+                    return true;
+                }
+            }
+        }
+    }
+
     static function logout(){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -156,6 +191,19 @@ class User
         $db = db::get();
 
         $selectString = "SELECT * FROM USERS WHERE USER_EMAIL=".$db->escape($email)." OR USERNAME=".$db->escape($username);
+        $row = $db->getRow($selectString);
+        if(empty($row)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    static function user_exist_on_update($username, $email, $userid){
+        include_once "../database/db.php";
+        $db = db::get();
+
+        $selectString = "SELECT * FROM USERS WHERE (USER_EMAIL=".$db->escape($email)." OR USERNAME=".$db->escape($username).") AND USER_ID != ".$db->escape($userid);
         $row = $db->getRow($selectString);
         if(empty($row)){
             return false;

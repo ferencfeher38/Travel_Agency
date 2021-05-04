@@ -2,8 +2,13 @@
 include_once "includes/header.php";
 include_once "database/db.php";
 $db = db :: get();
-$queryString = "SELECT USERNAME, USER_EMAIL FROM USERS WHERE USER_EMAIL = ".$db->escape($_SESSION["USER"]["USER_EMAIL"]);
-$result = $db->getRow($queryString);
+if(isset($_GET["id"]) && $_GET["id"] >= 0 && $_SESSION["USER"]["PERMISSION_ID"] == 0){
+    $queryString = "SELECT * FROM USERS WHERE USER_ID = ".$db->escape($_GET["id"]);
+    $result = $db->getRow($queryString);
+}else{
+    $queryString = "SELECT * FROM USERS WHERE USER_EMAIL = ".$db->escape($_SESSION["USER"]["USER_EMAIL"]);
+    $result = $db->getRow($queryString);
+}
 ?>
     <head>
     <style>
@@ -18,13 +23,13 @@ $result = $db->getRow($queryString);
         <!-- start banner Area -->
 			<section class="about-banner relative">
 				<div class="overlay overlay-bg"></div>
-				<div class="container">				
+				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
 								Profil adatok			
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Kezdőlap </a>  <span class="lnr lnr-arrow-right"></span>  <a href="profil.html"> Profil</a></p>
+							<p class="text-white link-nav"><a href="index.php">Kezdőlap</a> <?php echo ((isset($_GET["success"]) || isset($_GET["id"])) && $_SESSION["USER"]["PERMISSION_ID"] == 0 ? '<span class="lnr lnr-arrow-right"></span><a href="allUser.php">Felhasználók</a>' : '')?> <span class="lnr lnr-arrow-right"></span> <a href="#"> Profil</a></p>
 						</div>	
 					</div>
 				</div>
@@ -35,19 +40,80 @@ $result = $db->getRow($queryString);
 			<div class="whole-wrap">
 				<div class="container">
 					<div class="section-top-border">
-						<div class="row">
+                        <?php if(isset($_GET["success"])) :?>
+                            <div class="alert alert-success" role="alert">
+                                <p style="margin-bottom: 0;">Sikeres adatmódosítás!</p>
+                            </div>
+                        <?php endif; unset($_SESSION["success"]);?>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <b style="font-size: x-large;"><?php echo (isset($result["USERNAME"]) && $result["USERNAME"] != null ? $result["USERNAME"] : "Nincs ilyen felhasznalo!")?></b>
+                                <a href="edit_profile.php?id=<?php echo (isset($result["USER_ID"]) && $result["USER_ID"] != null ? $result["USER_ID"] : "#")?>" class="btn btn-warning float-right" style="padding-bottom: 3px; padding-top: 3px;">Profil szerkesztese</a>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><b>Email: </b><?php echo (isset($result["USER_EMAIL"]) && $result["USER_EMAIL"] != null ? $result["USER_EMAIL"] : "Nincs ilyen felhasznalo!")?></li>
+                                <li class="list-group-item"><b>Jogosultság: </b> <?php echo (isset($result["PERMISSION_NAME"]) && $result["PERMISSION_NAME"] != null ? $result["PERMISSION_NAME"] : "Nincs ilyen felhasznalo!")?></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-header">
+                                <b style="font-size: x-large">Jegyek</b>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Honnan</th>
+                                    <th scope="col">Hova</th>
+                                    <th scope="col">Datum</th>
+                                    <th scope="col">Ar</th>
+                                    <th scope="col">Szerkeszt</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Olasz</td>
+                                    <td>Magyar</td>
+                                    <td>2020.12.12.</td>
+                                    <td>50 000Ft</td>
+                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Magyar</td>
+                                    <td>Olasz</td>
+                                    <td>2020.12.12.</td>
+                                    <td>50 000Ft</td>
+                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Magyar</td>
+                                    <td>Nemet</td>
+                                    <td>2020.12.12.</td>
+                                    <td>150 000Ft</td>
+                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+						<!-- <div class="row">
 							<div class="col-lg-8 col-md-8">
 								<h3 class="mb-30">Profil adatok</h3>
                                 <div>
                                     <p class="datatitle">Felhasználónév:</p>
-                                    <p class="data"><?php echo $result["USERNAME"]?></p>
+                                    <p class="data"></p>
                                     <p class="datatitle">E-mail:</p>
-                                    <p class="data"><?php echo $result["USER_EMAIL"]?></p>
+                                    <p class="data"></p>
                                     <p class="datatitle">Jegyek:</p>
                                     <p class="data">Ide jönnek majd a jegyek.</p>
                                 </div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

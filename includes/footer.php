@@ -14,7 +14,3 @@
 <script src="js/main.js"></script>
 </body>
 </html>
-
-<?php
-include_once "includes/footer.php";
-?>

@@ -3,6 +3,7 @@
     $user_email = $_POST["user_email"];
     $password = $_POST["password"];
     $password_again = $_POST["password_again"];
+    $permission_id = $_POST["permission"];
     var_dump($username);
     var_dump($user_email);
     var_dump($password);
@@ -16,7 +17,7 @@
         header("Location: ../login_template.php");
         return false;
     }
-    if($user->register($username,$user_email,$password,2,"felhasznalo"))
+    if($user->register($username,$user_email,$password,1,"felhasznalo"))
     {
         header("Location: ../login_template.php?success");
     }
