@@ -1,13 +1,17 @@
+<?php
+include_once "includes/header.php";
+include_once "database/db.php";
+$db = db :: get();
+?>
 
-<?php include_once "includes/header.php"?>
 			<!-- start banner Area -->
 			<section class="banner-area relative">
 				<div class="overlay overlay-bg"></div>				
 				<div class="container">
 					<div class="row fullscreen align-items-center justify-content-between">
 						<div class="col-lg-6 col-md-6 banner-left">
-							<h6 class="text-white">Európai utazások</h6>
-							<h1 class="text-white">Utazzon Európa nagyvárosaiba</h1>
+							<h6 class="text-white">VILÁGKÖRÜLI UTAZÁSOK</h6>
+							<h1 class="text-white">Utazzon a világ nagyvárosaiba</h1>
 						</div>
 						<div class="col-lg-4 col-md-6 banner-right">
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -24,34 +28,34 @@
 							<div class="tab-content" id="myTabContent">
 							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
 								<form class="form-wrap">
-									<input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">
-									<input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
-									<input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
-									<input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
-									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
-									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">
+									<input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Honnan? '">
+									<input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Hova? '">
+									<input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Indulás '">
+									<input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Visszaút '">
+									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '">
+									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '">
 									<a href="#" class="primary-btn text-uppercase">Keresés</a>
 								</form>
 							  </div>
 							  <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
 								<form class="form-wrap">
-                                    <input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">
-                                    <input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
-                                    <input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
-                                    <input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
-                                    <input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
-                                    <input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">
+                                    <input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Honnan? '">
+                                    <input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Hova? '">
+                                    <input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Indulás '">
+                                    <input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Visszaút '">
+                                    <input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '">
+                                    <input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '">
 									<a href="#" class="primary-btn text-uppercase">Keresés</a>
 								</form>
 							  </div>
                                 <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
 								<form class="form-wrap">
-                                    <input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">
-                                    <input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
-                                    <input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
-                                    <input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
-                                    <input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
-                                    <input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">
+                                    <input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Honnan? '">
+                                    <input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Hova? '">
+                                    <input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Indulás '">
+                                    <input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Visszaút '">
+                                    <input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '">
+                                    <input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '">
 									<a href="#" class="primary-btn text-uppercase">Keresés</a>
 								</form>							  	
 							  </div>
