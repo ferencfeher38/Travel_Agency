@@ -1,6 +1,7 @@
 <?php
 include_once "includes/header.php";
 include_once "database/db.php";
+$db = db :: get();
 ?>
 
 			<!-- start banner Area -->
@@ -9,8 +10,8 @@ include_once "database/db.php";
 				<div class="container">
 					<div class="row fullscreen align-items-center justify-content-between">
 						<div class="col-lg-6 col-md-6 banner-left">
-							<h6 class="text-white">Európai utazások</h6>
-							<h1 class="text-white">Utazzon Európa nagyvárosaiba</h1>
+							<h6 class="text-white">VILÁGKÖRÜLI UTAZÁSOK</h6>
+							<h1 class="text-white">Utazzon a világ nagyvárosaiba</h1>
 						</div>
 						<div class="col-lg-4 col-md-6 banner-right">
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
