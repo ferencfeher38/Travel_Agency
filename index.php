@@ -8,7 +8,7 @@ if(isset($_POST['search'])) {
     if((isset($_POST['departure_name']) && isset($_POST['arrive_name']))) {
         $departure_name = $_POST['departure_name'];
         $arrive_name = $_POST['arrive_name'];
-        $queryString = "SELECT * FROM FLIGHT WHERE DEPARTURE_NAME LIKE '$departure_name' AND ARRIVE_NAME LIKE '$arrive_name'";
+        $queryString = "SELECT * FROM FLIGHT WHERE DEPARTURE_NAME LIKE '%$departure_name%' AND ARRIVE_NAME LIKE '%$arrive_name%'";
         $result = $db->query($queryString);
     }
 }
@@ -96,8 +96,8 @@ if(isset($_POST['search'])) {
                                     ?>
                                     <tr>
                                         <td ><?php echo $row["DEPARTURE_NAME"] ?></td>
-                                        <td><?php echo $row["DEPARTURE_DATE"] ?></td>
                                         <td><?php echo $row["ARRIVE_NAME"] ?></td>
+                                        <td><?php echo $row["DEPARTURE_DATE"] ?></td>
                                         <td><?php echo $row["ARRIVE_DATE"] ?></td>
                                         <td><input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '"></td>
                                         <td><input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '"></td>
