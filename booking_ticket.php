@@ -11,6 +11,9 @@ if(isset($_GET["id"])){
 
     $queryString = "SELECT * FROM HOTEL INNER JOIN F_HAS_H ON hotel.hotel_id = f_has_h.hotel_id WHERE f_has_h.flight_id =".$_GET["id"];
     $result3 = $db->query($queryString);
+
+    $queryString = "SELECT * FROM INSURANCE";
+    $result4 = $db->query($queryString);
 }else{
     $result = array();
     $result[] = "Nincs adat";
@@ -43,17 +46,30 @@ if(isset($_GET["id"])){
                 <div class="card-header">
                     <b style="font-size: x-large">Út információk</b>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Indulási hely:</b> <?php echo $result["DEPARTURE_NAME"] ?></li>
-                    <li class="list-group-item"><b>Indulási dátum:</b> <?php echo $result["DEPARTURE_DATE"] ?></li>
-                    <li class="list-group-item"><b>Érkezési hely:</b> <?php echo $result["ARRIVE_NAME"] ?></li>
-                    <li class="list-group-item"><b>Érkezési dátum:</b> <?php echo $result["ARRIVE_DATE"] ?></li>
-                    <li class="list-group-item"><b>Légitársaság:</b> <?php echo $result2["AIRLINE_NAME"] ?></li>
-                    <li class="list-group-item"><b>Látogatható hotelek:</b> <?php foreach($result3 as $hotel) ?><?php echo $hotel["HOTEL_NAME"] ?></li>
-                    <li class="list-group-item"><b>Jegy ár:</b> <?php echo "5000Ft" ?></li>
-                    <li class="list-group-item"><a href="#" class="btn btn-outline-primary" style="width: 100%">Felnőtt jegy foglalás</a></li>
-                    <li class="list-group-item"><a href="#" class="btn btn-outline-primary" style="width: 100%">Gyermekjegy foglalás</a></li>
-                </ul>
+                <form action="add_ticket.php?userId=<?php echo $_SESSION["USER"]["USER_ID"] ?>&insuranceId=<?php echo "5" ?>&flightId=<?php echo $result["FLIGHT_ID"] ?>&isChildren=0" method="post">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Indulási hely:</b> <?php echo $result["DEPARTURE_NAME"] ?></li>
+                        <li class="list-group-item"><b>Indulási dátum:</b> <?php echo $result["DEPARTURE_DATE"] ?></li>
+                        <li class="list-group-item"><b>Érkezési hely:</b> <?php echo $result["ARRIVE_NAME"] ?></li>
+                        <li class="list-group-item"><b>Érkezési dátum:</b> <?php echo $result["ARRIVE_DATE"] ?></li>
+                        <li class="list-group-item"><b>Légitársaság:</b> <?php echo $result2["AIRLINE_NAME"] ?></li>
+                        <li class="list-group-item"><b>Látogatható hotelek:</b> <?php foreach($result3 as $hotel) ?><?php echo $hotel["HOTEL_NAME"] ?></li>
+                        <li class="list-group-item"><b>Jegy ár:</b> <?php echo $result["FLIGHT_PRICE"] ?>Ft</li>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                            <div class="form-select" id="default-select">
+                                <select name="insuranceId" id="insuranceId">
+                                    <option value="0">Nincs</option>
+                                    <?php foreach($result4 as $ic) :?>
+                                        <option value="<?php echo $ic["INSURANCE_ID"] ?>"><?php echo $ic["INSURANCE_NAME"] ?> (<?php echo $ic["INSURANCE_PRICE"] ?>Ft)</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <li class="list-group-item"><button type="submit" name="adultTicket" id="adultTicket" class="btn btn-outline-primary" style="width: 100%">Felnőtt jegy foglalás</button></li>
+                        <li class="list-group-item"><button type="submit" name="childrenTicket" id="childrenTicket" class="btn btn-outline-primary" style="width: 100%">Gyermekjegy foglalás</button></li>
+                    </ul>
+                </form>
             </div>
 
         </div>
