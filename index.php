@@ -2,9 +2,19 @@
 include_once "includes/header.php";
 include_once "database/db.php";
 $db = db :: get();
-?>
 
+// Itt az időt kellenne csekkolni még.
+if(isset($_POST['search'])) {
+    if((isset($_POST['departure_name']) && isset($_POST['arrive_name']))) {
+        $departure_name = $_POST['departure_name'];
+        $arrive_name = $_POST['arrive_name'];
+        $queryString = "SELECT * FROM FLIGHT WHERE DEPARTURE_NAME = '$departure_name' AND ARRIVE_NAME = '$arrive_name'";
+        $result = $db->query($queryString);
+    }
+}
+?>
 			<!-- start banner Area -->
+            <iframe name="frame"></iframe>
 			<section class="banner-area relative">
 				<div class="overlay overlay-bg"></div>				
 				<div class="container">
@@ -27,14 +37,12 @@ $db = db :: get();
 							</ul>
 							<div class="tab-content" id="myTabContent">
 							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
-								<form class="form-wrap">
-									<input type="text" class="form-control" name="name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Honnan? '">
-									<input type="text" class="form-control" name="to" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Hova? '">
-									<input type="text" class="form-control date-picker" name="start" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Indulás '">
-									<input type="text" class="form-control date-picker" name="return" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Visszaút '">
-									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '">
-									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '">
-									<a href="#" class="primary-btn text-uppercase">Keresés</a>
+								<form class="form-wrap" method="post">
+									<input type="text" class="form-control" name="departure_name" placeholder="Honnan? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Honnan? '">
+									<input type="text" class="form-control" name="arrive_name" placeholder="Hova? " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Hova? '">
+									<input type="date" class="form-control date-picker" name="departure_date" placeholder="Indulás " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Indulás '">
+									<input type="date" class="form-control date-picker" name="arrive_date" placeholder="Visszaút " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Visszaút '">
+                                    <button  id="search" type="submit" name="search" class="primary-btn text-uppercase">Keresés</button>
 								</form>
 							  </div>
 							  <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
@@ -69,7 +77,41 @@ $db = db :: get();
 			<!-- Start szolgáltatások Area -->
 			<section class="other-issue-area section-gap">
 				<div class="container">
-		            <div class="row d-flex justify-content-center">
+                    <div class= "card">
+                        <div class="card-header">
+                            <b style="font-size: x-large">Utak</b>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Honnan</th>
+                                <th scope="col">Hova</th>
+                                <th scope="col">Indulás</th>
+                                <th scope="col">Érkezés</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            if(isset($result)) {
+                                foreach ($result as $row):
+                                    ?>
+                                    <tr>
+                                        <td ><?php echo $row["DEPARTURE_NAME"] ?></td>
+                                        <td><?php echo $row["DEPARTURE_DATE"] ?></td>
+                                        <td><?php echo $row["ARRIVE_NAME"] ?></td>
+                                        <td><?php echo $row["ARRIVE_DATE"] ?></td>
+                                        <td><input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '"></td>
+                                        <td><input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '"></td>
+                                        <td><form method="post"><button type="submit" id="booking" name="booking" class="primary-btn text-uppercase">Foglalás</button></form></td>
+                                    </tr>
+                                <?php endforeach; }?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-9">
 		                    <div class="title text-center">
 		                        <h1 class="mb-10">Szolgáltatásaink</h1>
