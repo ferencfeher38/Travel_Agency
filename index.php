@@ -8,7 +8,7 @@ if(isset($_POST['search'])) {
     if((isset($_POST['departure_name']) && isset($_POST['arrive_name']))) {
         $departure_name = $_POST['departure_name'];
         $arrive_name = $_POST['arrive_name'];
-        $queryString = "SELECT * FROM FLIGHT WHERE DEPARTURE_NAME = '$departure_name' AND ARRIVE_NAME = '$arrive_name'";
+        $queryString = "SELECT * FROM FLIGHT WHERE DEPARTURE_NAME LIKE '$departure_name' AND ARRIVE_NAME LIKE '$arrive_name'";
         $result = $db->query($queryString);
     }
 }
