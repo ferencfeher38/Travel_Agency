@@ -10,7 +10,7 @@ if(isset($_GET["id"]) && $_GET["id"] >= 0 && $_SESSION["USER"]["PERMISSION_ID"] 
     $result = $db->getRow($queryString);
 }
 
-$queryString = "SELECT * FROM ((TICKET INNER JOIN FLIGHT ON TICKET.FLIGHT_ID = FLIGHT.FLIGHT_ID) INNER JOIN USERS ON TICKET.USER_ID = '" . $_SESSION['USER']['USER_ID'] . "')";
+$queryString = "SELECT * FROM FLIGHT INNER JOIN TICKET ON TICKET.FLIGHT_ID = flight.flight_id WHERE USER_ID =".$_SESSION['USER']['USER_ID'];
 $result2 = $db->query($queryString);
 ?>
     <head>
