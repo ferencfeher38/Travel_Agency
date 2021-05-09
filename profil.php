@@ -84,7 +84,7 @@ $result2 = $db->query($queryString);
                                             <td><?php echo $row["DEPARTURE_DATE"] ?></td>
                                             <td><?php echo $row["ARRIVE_DATE"] ?></td>
                                             <td><?php echo $row["TICKET_PRICE"] ?></td>
-                                            <td><button type="button" id="booking" name="booking" class="primary-btn text-uppercase">Törlés</button></td>
+                                            <td><a href="delete_ticket.php?ticketId=<?php echo $row["TICKET_ID"] ?>" type="button" class="primary-btn text-uppercase">Törlés</a></td>
                                         </tr>
                                     <?php endforeach; }?>
                                 </tbody>

@@ -38,3 +38,5 @@
     )";
 
     $db->executeQuery($queryString);
+
+    header("Location: profil.php?id=".$userId);
