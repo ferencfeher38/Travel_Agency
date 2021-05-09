@@ -10,7 +10,7 @@ if(isset($_GET["id"]) && $_GET["id"] >= 0 && $_SESSION["USER"]["PERMISSION_ID"] 
     $result = $db->getRow($queryString);
 }
 
-$queryString = "SELECT * FROM FLIGHT INNER JOIN TICKET ON TICKET.FLIGHT_ID = flight.flight_id WHERE USER_ID =".$_SESSION['USER']['USER_ID'];
+$queryString = "SELECT * FROM FLIGHT, TICKET WHERE TICKET.FLIGHT_ID = flight.flight_id AND USER_ID =".$_SESSION['USER']['USER_ID'];
 $result2 = $db->query($queryString);
 ?>
     <head>
@@ -83,7 +83,7 @@ $result2 = $db->query($queryString);
                                             <td><?php echo $row["ARRIVE_NAME"] ?></td>
                                             <td><?php echo $row["DEPARTURE_DATE"] ?></td>
                                             <td><?php echo $row["ARRIVE_DATE"] ?></td>
-                                            <td><?php echo $row["FLIGHT_PRICE"] ?></td>
+                                            <td><?php echo $row["TICKET_PRICE"] ?></td>
                                             <td><button type="button" id="booking" name="booking" class="primary-btn text-uppercase">Törlés</button></td>
                                         </tr>
                                     <?php endforeach; }?>
