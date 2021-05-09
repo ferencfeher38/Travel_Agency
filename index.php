@@ -14,7 +14,6 @@ if(isset($_POST['search'])) {
 }
 ?>
 			<!-- start banner Area -->
-            <iframe name="frame"></iframe>
 			<section class="banner-area relative">
 				<div class="overlay overlay-bg"></div>				
 				<div class="container">
