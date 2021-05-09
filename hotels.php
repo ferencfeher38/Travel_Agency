@@ -49,8 +49,6 @@ $result = $db->query($queryString);
                             </div>
                         </div>
                         <?php endforeach; ?>
-
-
 					</div>
 				</div>	
 			</section>

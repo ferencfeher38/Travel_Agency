@@ -9,6 +9,9 @@ if(isset($_GET["id"]) && $_GET["id"] >= 0 && $_SESSION["USER"]["PERMISSION_ID"] 
     $queryString = "SELECT * FROM USERS WHERE USER_EMAIL = ".$db->escape($_SESSION["USER"]["USER_EMAIL"]);
     $result = $db->getRow($queryString);
 }
+
+$queryString = "SELECT * FROM ((TICKET INNER JOIN FLIGHT ON TICKET.FLIGHT_ID = FLIGHT.FLIGHT_ID) INNER JOIN USERS ON TICKET.USER_ID = '" . $_SESSION['USER']['USER_ID'] . "')";
+$result2 = $db->query($queryString);
 ?>
     <head>
     <style>
@@ -64,56 +67,29 @@ if(isset($_GET["id"]) && $_GET["id"] >= 0 && $_SESSION["USER"]["PERMISSION_ID"] 
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Honnan</th>
                                     <th scope="col">Hova</th>
-                                    <th scope="col">Datum</th>
-                                    <th scope="col">Ar</th>
-                                    <th scope="col">Szerkeszt</th>
+                                    <th scope="col">Indulás</th>
+                                    <th scope="col">Érkezés</th>
+                                    <th scope="col">Ár</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Olasz</td>
-                                    <td>Magyar</td>
-                                    <td>2020.12.12.</td>
-                                    <td>50 000Ft</td>
-                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Magyar</td>
-                                    <td>Olasz</td>
-                                    <td>2020.12.12.</td>
-                                    <td>50 000Ft</td>
-                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Magyar</td>
-                                    <td>Nemet</td>
-                                    <td>2020.12.12.</td>
-                                    <td>150 000Ft</td>
-                                    <td><a href="#" class="btn btn-warning">Szerkeszt</a></td>
-                                </tr>
+                                <?php
+                                if(isset($result2)) {
+                                    foreach ($result2 as $row):?>
+                                        <tr>
+                                            <td ><?php echo $row["DEPARTURE_NAME"] ?></td>
+                                            <td><?php echo $row["ARRIVE_NAME"] ?></td>
+                                            <td><?php echo $row["DEPARTURE_DATE"] ?></td>
+                                            <td><?php echo $row["ARRIVE_DATE"] ?></td>
+                                            <td><?php echo $row["FLIGHT_PRICE"] ?></td>
+                                            <td><button type="button" id="booking" name="booking" class="primary-btn text-uppercase">Törlés</button></td>
+                                        </tr>
+                                    <?php endforeach; }?>
                                 </tbody>
                             </table>
                         </div>
-
-						<!-- <div class="row">
-							<div class="col-lg-8 col-md-8">
-								<h3 class="mb-30">Profil adatok</h3>
-                                <div>
-                                    <p class="datatitle">Felhasználónév:</p>
-                                    <p class="data"></p>
-                                    <p class="datatitle">E-mail:</p>
-                                    <p class="data"></p>
-                                    <p class="datatitle">Jegyek:</p>
-                                    <p class="data">Ide jönnek majd a jegyek.</p>
-                                </div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>
