@@ -101,7 +101,7 @@ if(isset($_POST['search'])) {
                                         <td><?php echo $row["ARRIVE_DATE"] ?></td>
                                         <td><input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Felnőtt " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Felnőtt '"></td>
                                         <td><input type="number" min="1" max="20" class="form-control" name="child" placeholder="Gyerek " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gyerek '"></td>
-                                        <td><form method="post"><button type="submit" id="booking" name="booking" class="primary-btn text-uppercase">Foglalás</button></form></td>
+                                        <td><a href="booking_ticket.php?id=<?php echo $row["FLIGHT_ID"] ?>" type="button" id="booking" name="booking" class="primary-btn text-uppercase">Foglalás</a></td>
                                     </tr>
                                 <?php endforeach; }?>
                             </tbody>
