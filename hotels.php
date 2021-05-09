@@ -44,47 +44,7 @@ $result = $db->query($queryString);
                                 <div class="details">
                                     <h4 class="d-flex justify-content-between">
                                         <span><?php echo $row["HOTEL_NAME"] ?></span>
-                                        <!--<div class="star">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                        </div>-->
                                     </h4>
-                                    <p>
-                                        View on map   |   49 Reviews
-                                    </p>
-                                    <ul class="package-list">
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Medence</span>
-                                            <span>Igen</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Konditerem</span>
-                                            <span>Nem</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Wi-fi</span>
-                                            <span>Igen</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Szoba szervíz</span>
-                                            <span>Nem</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Légkondicionáló</span>
-                                            <span>Igen</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Étterem</span>
-                                            <span>Igen</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center">
-                                            <span>Ár/éjszaka</span>
-                                            <a href="#" class="price-btn">40000Ft</a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
