@@ -3,7 +3,7 @@ class db{
     /**
      * Itt állítsátok át a saját adatbázisotokra.
      */
-    private static $db_username = "DAVADKA";
+    private static $db_username = "FERENC";
     private static $db_password = "asdasd";
     private static $instance = null;
     private static $conn = "";
